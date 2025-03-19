@@ -37,7 +37,7 @@ const Header = () => {
 
         {/* Center - Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
-          {["/", "/Property", "/Project", "/About", "/Contact"].map(
+          {["/", "/about", "/property", "/pages", "/blog", "/contact"].map(
             (path, index) => (
               <Link key={index} to={path} className={isActive(path)}>
                 {path === "/"
@@ -83,7 +83,7 @@ const Header = () => {
       {menuOpen && (
         <nav className="md:hidden bg-gray-800 text-white p-4">
           <ul className="space-y-4 text-center">
-            {["/", "/Property", "/Project", "/About", "/Contact"].map(
+            {["/", "/about", "/property", "/pages", "/blog", "/contact"].map(
               (path, index) => (
                 <li key={index}>
                   <Link
