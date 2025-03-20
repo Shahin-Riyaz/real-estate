@@ -9,8 +9,8 @@ const Header = () => {
   const isActive = useMemo(
     () => (path) =>
       location.pathname === path
-        ? "text-orange-500 font-semibold"
-        : "hover:text-orange-500 transition",
+        ? "text-orange-500 font-semibold capitalize"
+        : "hover:text-orange-500 transition capitalize",
     [location.pathname]
   );
 
@@ -29,8 +29,8 @@ const Header = () => {
           </button>
           <Link to="/" className="flex items-center gap-2">
             <span className="text-orange-500 text-2xl font-bold">🏡</span>
-            <h1 className="text-lg font-semibold">
-              City<span className="text-orange-500">Scape</span>
+            <h1 className="text-lg font-semibold capitalize">
+              Sha<span className="text-orange-500">Properties</span>
             </h1>
           </Link>
         </div>
@@ -48,11 +48,11 @@ const Header = () => {
           )}
         </nav>
 
-        {/* Right Side - Buttons & Profile (Profile stays in header for both desktop & mobile) */}
+        {/* Right Side - Buttons & Profile */}
         <div className="flex items-center gap-6">
           <div className="hidden md:flex items-center gap-2">
             <FaPhoneAlt className="text-white" />
-            <span className="text-sm">Call Us Now</span>
+            <span className="text-sm capitalize">Call Us Now</span>
             <span className="text-sm font-semibold">+025 757 576 560</span>
           </div>
 
@@ -60,15 +60,15 @@ const Header = () => {
           <div className="hidden md:flex gap-2">
             <Link
               to="/sign-in"
-              className="bg-gray-700 text-white px-4 py-2 rounded-md font-semibold hover:bg-gray-600 transition"
+              className="bg-gray-700 text-white px-4 py-2 rounded-md font-semibold hover:bg-gray-600 transition capitalize"
             >
               Sign In
             </Link>
             <Link
-              to="/add-listing"
-              className="bg-yellow-500 text-gray-900 px-4 py-2 rounded-md font-semibold hover:bg-yellow-400 transition"
+              to="/sign-up"
+              className="bg-blue-500 text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-400 transition capitalize"
             >
-              ADD LISTING →
+              Sign Up
             </Link>
           </div>
 
@@ -101,13 +101,13 @@ const Header = () => {
             <li>
               <div className="flex justify-center items-center gap-2 mt-4">
                 <FaPhoneAlt />
-                <span className="text-sm">+025 757 576 560</span>
+                <span className="text-sm capitalize">Call Us Now</span>
               </div>
             </li>
             <li>
               <Link
                 to="/sign-in"
-                className="block bg-gray-700 text-white px-4 py-2 rounded-md font-semibold hover:bg-gray-600 transition mt-4"
+                className="block bg-gray-700 text-white px-4 py-2 rounded-md font-semibold hover:bg-gray-600 transition mt-4 capitalize"
                 onClick={() => setMenuOpen(false)}
               >
                 Sign In
@@ -115,11 +115,11 @@ const Header = () => {
             </li>
             <li>
               <Link
-                to="/add-listing"
-                className="block bg-yellow-500 text-gray-900 px-4 py-2 rounded-md font-semibold hover:bg-yellow-400 transition mt-4"
+                to="/sign-up"
+                className="block bg-blue-500 text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-400 transition mt-4 capitalize"
                 onClick={() => setMenuOpen(false)}
               >
-                ADD LISTING →
+                Sign Up
               </Link>
             </li>
           </ul>
