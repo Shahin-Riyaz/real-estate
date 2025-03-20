@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
@@ -44,7 +45,8 @@ export default function SignUp() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-700 via-gray-600 to-gray-500 p-4">
-      <div className="bg-gradient-to-br from-gray-300 to-gray-100 text-gray-900 p-8 rounded-[30px] shadow-lg w-full max-w-md">
+      {/* Sign-Up Form */}
+      <div className="relative bg-gradient-to-br from-gray-300 to-gray-100 text-gray-900 p-8 rounded-[30px] shadow-lg w-full max-w-md z-10">
         {/* Logo (Increased Size) */}
         <div className="flex justify-center mb-6">
           <Link to="/" className="flex items-center gap-3">
@@ -55,7 +57,7 @@ export default function SignUp() {
           </Link>
         </div>
 
-        {/* Sign Up Form */}
+        {/* Sign-Up Form */}
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-3">
           <input
             type="text"
