@@ -8,6 +8,7 @@ export default function SignUp() {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -76,14 +77,23 @@ export default function SignUp() {
             onChange={handleChange}
             required
           />
-          <input
-            type="password"
-            placeholder="Password"
-            className="bg-gray-200 p-3 rounded-[30px] border border-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
-            id="password"
-            onChange={handleChange}
-            required
-          />
+          {/* Password Input with Eye Icon */}
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              className="bg-gray-200 p-3 w-full rounded-[30px] border border-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 pr-12"
+              id="password"
+              onChange={handleChange}
+              required
+            />
+            <span
+              className="absolute right-4 top-3 text-gray-600 cursor-pointer"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
 
           {/* Stay Signed In (Centered) */}
           <div className="flex justify-center items-center gap-2 text-sm">
@@ -99,12 +109,6 @@ export default function SignUp() {
               className="w-10/12 bg-orange-500 text-white p-3 rounded-[30px] text-center hover:bg-orange-400 transition disabled:opacity-80"
             >
               {loading ? "Loading..." : "Sign up"}
-            </button>
-
-            {/* Sign Up with Google Button (Same Size & Style) */}
-            <button className="w-10/12 flex justify-center items-center gap-2 bg-orange-500 text-white p-3 rounded-[30px] text-center hover:bg-orange-400 transition">
-              <FcGoogle className="text-xl" />
-              Sign up with Google
             </button>
           </div>
           <OAuth />

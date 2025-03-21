@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   signInStart,
   signInSuccess,
@@ -13,6 +14,7 @@ import OAuth from "../components/OAuth";
 export default function SignIn() {
   const [formData, setFormData] = useState({});
   const { loading, error } = useSelector((state) => state.user);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleChange = (e) => {
@@ -69,14 +71,23 @@ export default function SignIn() {
             required
           />
 
-          <input
-            type="password"
-            placeholder="Password"
-            className="bg-gray-200 p-3 rounded-[30px] border border-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
-            id="password"
-            onChange={handleChange}
-            required
-          />
+          {/* Password Input with Eye Icon */}
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              className="bg-gray-200 p-3 w-full rounded-[30px] border border-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 pr-12"
+              id="password"
+              onChange={handleChange}
+              required
+            />
+            <span
+              className="absolute right-4 top-3 text-gray-600 cursor-pointer"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
 
           {/* Buttons Wrapper */}
           <div className="flex flex-col gap-3 items-center">
@@ -86,12 +97,6 @@ export default function SignIn() {
               className="w-10/12 bg-orange-500 text-white p-3 rounded-[30px] text-center hover:bg-orange-400 transition disabled:opacity-80"
             >
               {loading ? "Loading..." : "Sign in"}
-            </button>
-
-            {/* Sign In with Google */}
-            <button className="w-10/12 flex justify-center items-center gap-2 bg-orange-500 text-white p-3 rounded-[30px] text-center hover:bg-orange-400 transition">
-              <FcGoogle className="text-xl" />
-              Sign in with Google
             </button>
           </div>
           <OAuth />
