@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { FaBars, FaTimes, FaPhoneAlt, FaUserCircle } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 
@@ -6,13 +6,10 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
-  const isActive = useMemo(
-    () => (path) =>
-      location.pathname === path
-        ? "text-orange-500 font-semibold capitalize"
-        : "hover:text-orange-500 transition capitalize",
-    [location.pathname]
-  );
+  const isActive = (path) =>
+    location.pathname === path
+      ? "text-orange-500 font-semibold capitalize"
+      : "hover:text-orange-500 transition capitalize";
 
   return (
     <header className="bg-gray-900 text-white shadow-md">
@@ -60,20 +57,20 @@ const Header = () => {
           <div className="hidden md:flex gap-2">
             <Link
               to="/sign-in"
-              className="bg-gray-700 text-white px-4 py-2 rounded-md font-semibold hover:bg-gray-600 transition capitalize"
+              className="bg-gray-700 text-white px-4 py-2 rounded-[30px] font-semibold hover:bg-gray-600 transition capitalize"
             >
               Sign In
             </Link>
             <Link
               to="/sign-up"
-              className="bg-blue-500 text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-400 transition capitalize"
+              className="bg-blue-500 text-white px-4 py-2 rounded-[30px] font-semibold hover:bg-blue-400 transition capitalize"
             >
               Sign Up
             </Link>
           </div>
 
-          {/* Profile Icon (Visible in header for both mobile & desktop) */}
-          <Link to="/profile">
+          {/* Profile Icon */}
+          <Link to="/profile" className="p-2">
             <FaUserCircle className="text-white text-2xl cursor-pointer hover:text-orange-500 transition" />
           </Link>
         </div>
@@ -107,7 +104,7 @@ const Header = () => {
             <li>
               <Link
                 to="/sign-in"
-                className="block bg-gray-700 text-white px-4 py-2 rounded-md font-semibold hover:bg-gray-600 transition mt-4 capitalize"
+                className="block bg-gray-700 text-white px-4 py-2 rounded-[30px] font-semibold hover:bg-gray-600 transition mt-4 capitalize"
                 onClick={() => setMenuOpen(false)}
               >
                 Sign In
@@ -116,7 +113,7 @@ const Header = () => {
             <li>
               <Link
                 to="/sign-up"
-                className="block bg-blue-500 text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-400 transition mt-4 capitalize"
+                className="block bg-blue-500 text-white px-4 py-2 rounded-[30px] font-semibold hover:bg-blue-400 transition mt-4 capitalize"
                 onClick={() => setMenuOpen(false)}
               >
                 Sign Up
