@@ -1,129 +1,52 @@
-import { useState } from "react";
-import { FaBars, FaTimes, FaPhoneAlt, FaUserCircle } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
-
-  const isActive = (path) =>
-    location.pathname === path
-      ? "text-orange-500 font-semibold capitalize"
-      : "hover:text-orange-500 transition capitalize";
-
+export default function Header() {
+  const { currentUser } = useSelector((state) => state.user);
   return (
-    <header className="bg-gray-900 text-white shadow-md">
-      <div className="flex justify-between items-center max-w-7xl mx-auto p-4">
-        {/* Left Side - Logo and Mobile Menu */}
-        <div className="flex items-center gap-4">
-          {/* Menu Toggle Button */}
-          <button
-            className="md:hidden text-white text-xl"
-            aria-label="Toggle Menu"
-            onClick={() => setMenuOpen((prev) => !prev)}
-          >
-            {menuOpen ? <FaTimes /> : <FaBars />}
-          </button>
-          <Link to="/" className="flex items-center gap-2">
-            <span className="text-orange-500 text-2xl font-bold">🏡</span>
-            <h1 className="text-lg font-semibold capitalize">
-              Sha<span className="text-orange-500">Properties</span>
-            </h1>
+    <header className="bg-slate-200 shadow-md">
+      <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
+        <Link to="/">
+          <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
+            <span className="text-slate-500">Sahand</span>
+            <span className="text-slate-700">Estate</span>
+          </h1>
+        </Link>
+        <form>
+          <input
+            type="text"
+            placeholder="Search..."
+            className="bg-transparent focus:outline-none w-24 sm:w-64"
+          />
+        </form>
+        <button>
+          <FaSearch className="text-slate-600" />
+        </button>
+        <ul className="flex gap-4">
+          <Link to="/">
+            <li className="hidden sm:inline text-slate-700 hover:underline">
+              Home
+            </li>
           </Link>
-        </div>
-
-        {/* Center - Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6">
-          {["/", "/about", "/property", "/pages", "/blog", "/contact"].map(
-            (path, index) => (
-              <Link key={index} to={path} className={isActive(path)}>
-                {path === "/"
-                  ? "Home"
-                  : path.replace("/", "").replace("-", " ")}
-              </Link>
-            )
-          )}
-        </nav>
-
-        {/* Right Side - Buttons & Profile */}
-        <div className="flex items-center gap-6">
-          <div className="hidden md:flex items-center gap-2">
-            <FaPhoneAlt className="text-white" />
-            <span className="text-sm capitalize">Call Us Now</span>
-            <span className="text-sm font-semibold">+025 757 576 560</span>
-          </div>
-
-          {/* Buttons Wrapper */}
-          <div className="hidden md:flex gap-2">
-            <Link
-              to="/sign-in"
-              className="bg-gray-700 text-white px-4 py-2 rounded-[30px] font-semibold hover:bg-gray-600 transition capitalize"
-            >
-              Sign In
-            </Link>
-            <Link
-              to="/sign-up"
-              className="bg-blue-500 text-white px-4 py-2 rounded-[30px] font-semibold hover:bg-blue-400 transition capitalize"
-            >
-              Sign Up
-            </Link>
-          </div>
-
-          {/* Profile Icon */}
-          <Link to="/profile" className="p-2">
-            <FaUserCircle className="text-white text-2xl cursor-pointer hover:text-orange-500 transition" />
+          <Link to="/about">
+            <li className="hidden sm:inline text-slate-700 hover:underline">
+              About
+            </li>
           </Link>
-        </div>
-      </div>
-
-      {/* Mobile Navigation (Hidden by Default) */}
-      {menuOpen && (
-        <nav className="md:hidden bg-gray-800 text-white p-4">
-          <ul className="space-y-4 text-center">
-            {["/", "/about", "/property", "/pages", "/blog", "/contact"].map(
-              (path, index) => (
-                <li key={index}>
-                  <Link
-                    to={path}
-                    className={`block ${isActive(path)}`}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {path === "/"
-                      ? "Home"
-                      : path.replace("/", "").replace("-", " ")}
-                  </Link>
-                </li>
-              )
+          <Link to="/profile">
+            {currentUser ? (
+              <img
+                className="rounded-full h-7 w-7 object-cover"
+                src={currentUser.avatar}
+                alt="profile"
+              />
+            ) : (
+              <li className=" text-slate-700 hover:underline"> Sign in</li>
             )}
-            <li>
-              <div className="flex justify-center items-center gap-2 mt-4">
-                <FaPhoneAlt />
-                <span className="text-sm capitalize">Call Us Now</span>
-              </div>
-            </li>
-            <li>
-              <Link
-                to="/sign-in"
-                className="block bg-gray-700 text-white px-4 py-2 rounded-[30px] font-semibold hover:bg-gray-600 transition mt-4 capitalize"
-                onClick={() => setMenuOpen(false)}
-              >
-                Sign In
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/sign-up"
-                className="block bg-blue-500 text-white px-4 py-2 rounded-[30px] font-semibold hover:bg-blue-400 transition mt-4 capitalize"
-                onClick={() => setMenuOpen(false)}
-              >
-                Sign Up
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      )}
+          </Link>
+        </ul>
+      </div>
     </header>
   );
-};
-
-export default Header;
+}
