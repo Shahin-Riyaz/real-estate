@@ -11,7 +11,7 @@ router.post("/", upload.single("image"), (req, res) => {
 
     res.status(200).json({
       success: true,
-      imageUrl: req.file.path, // Cloudinary URL
+      imageUrl: req.file.path, 
     });
   } catch (error) {
     console.error("Upload Error:", error);

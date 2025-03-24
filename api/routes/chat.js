@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
         },
 
         body: JSON.stringify({
-          model: "openai/gpt-3.5-turbo", // You can change to "anthropic/claude-2" or others
+          model: "openai/gpt-3.5-turbo", 
           max_tokens: 100,
           messages: [
             {
