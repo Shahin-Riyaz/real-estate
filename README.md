@@ -31,14 +31,6 @@ A modern, responsive real estate web application built with the MERN stack. User
 
 ---
 
-## 🖥️ Screenshots
-
-| Home Page | Property Page | Chatbot |
-|----------|---------------|---------|
-| ![Home](https://i.imgur.com/X3z8sZi.png) | ![Listing](https://i.imgur.com/9UzWUdq.png) | ![Chatbot](https://i.imgur.com/hF5PvXm.png) |
-
----
-
 ## 🚀 Getting Started
 
 ### Prerequisites
