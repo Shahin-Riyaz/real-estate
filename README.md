@@ -47,19 +47,19 @@ A modern, responsive real estate web application built with the MERN stack. User
 
 Create a .env file in your root directory:
 
-MONGO_URI=your_mongodb_uri
-JWT_SECRET=your_jwt_secret
-OPENAI_API_KEY=your_openai_api_key
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-VITE_FIREBASE_API_KEY = your_api_secret
+- MONGO_URI=your_mongodb_uri
+- JWT_SECRET=your_jwt_secret
+- OPENAI_API_KEY=your_openai_api_key
+- CLOUDINARY_CLOUD_NAME=your_cloud_name
+- CLOUDINARY_API_KEY=your_api_key
+- CLOUDINARY_API_SECRET=your_api_secret
+- VITE_FIREBASE_API_KEY = your_api_secret
 
 
 # Start frontend
-npm install
-npm run dev
+- npm install
+- npm run dev
 
 # Start backend (in /api folder)
-npm install
-npm run dev
+- npm install
+- npm run dev
