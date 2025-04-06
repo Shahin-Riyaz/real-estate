@@ -12,7 +12,7 @@ A modern, responsive real estate web application built with the MERN stack. User
 - 🏘️ Property Listings (Rent/Sale)
 - 📸 Image Uploads with Cloudinary
 - 📅 Appointment Booking Form
-- 🧠 AI Chatbot (OpenAI)
+- 🧠 AI Chatbot
 - 📬 Newsletter Signup
 - 🔍 Search & Filter Properties
 - 🎯 Responsive Design with Tailwind CSS
