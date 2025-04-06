@@ -1,49 +1,65 @@
-import { Link } from 'react-router-dom';
-import { MdLocationOn } from 'react-icons/md';
+import { Link } from "react-router-dom";
+import { MdLocationOn } from "react-icons/md";
+import { FaBed, FaBath, FaArrowRight } from "react-icons/fa";
 
 export default function ListingItem({ listing }) {
   return (
-    <div className='bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]'>
-      <Link to={`/listing/${listing._id}`}>
-        <img
-          src={
-            listing.imageUrls[0] ||
-            'https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/Sales_Blog/real-estate-business-compressor.jpg?width=595&height=400&name=real-estate-business-compressor.jpg'
-          }
-          alt='listing cover'
-          className='h-[320px] sm:h-[220px] w-full object-cover hover:scale-105 transition-scale duration-300'
-        />
-        <div className='p-3 flex flex-col gap-2 w-full'>
-          <p className='truncate text-lg font-semibold text-slate-700'>
+    <div className="relative max-w-sm mx-auto">
+      <Link to={`/listing/${listing._id}`} className="block group">
+        {/* Background Image */}
+        <div className="overflow-hidden rounded-t-xl">
+          <img
+            src={
+              listing.imageUrls[0] ||
+              "https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/Sales_Blog/real-estate-business-compressor.jpg"
+            }
+            alt={listing.name}
+            className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+
+        {/* Floating Card Content */}
+        <div className="bg-white rounded-xl shadow-md px-6 py-6 space-y-4 mt-[-2.5rem] relative z-10 mx-auto w-[90%]">
+          {/* Title */}
+          <h3 className="text-xl font-semibold text-gray-900 leading-snug">
             {listing.name}
-          </p>
-          <div className='flex items-center gap-1'>
-            <MdLocationOn className='h-4 w-4 text-green-700' />
-            <p className='text-sm text-gray-600 truncate w-full'>
-              {listing.address}
-            </p>
+          </h3>
+
+          {/* Beds & Baths */}
+          <div className="flex items-center gap-6 text-sm text-gray-500 font-medium">
+            <div className="flex items-center gap-1 text-orange-500">
+              <FaBed />
+              <span className="text-gray-600">
+                {listing.bedrooms} {listing.bedrooms > 1 ? "Beds" : "Bed"}
+              </span>
+            </div>
+            <div className="flex items-center gap-1 text-orange-500">
+              <FaBath />
+              <span className="text-gray-600">
+                {listing.bathrooms} {listing.bathrooms > 1 ? "Baths" : "Bath"}
+              </span>
+            </div>
           </div>
-          <p className='text-sm text-gray-600 line-clamp-2'>
-            {listing.description}
+
+          {/* Price */}
+          <p className="text-xl font-bold text-gray-800">
+            ${listing.offer ? listing.discountPrice : listing.regularPrice}
+            <span className="text-sm font-medium text-gray-500 ml-1">
+              {listing.type === "rent" && "/per month"}
+            </span>
           </p>
-          <p className='text-slate-500 mt-2 font-semibold '>
-            $
-            {listing.offer
-              ? listing.discountPrice.toLocaleString('en-US')
-              : listing.regularPrice.toLocaleString('en-US')}
-            {listing.type === 'rent' && ' / month'}
-          </p>
-          <div className='text-slate-700 flex gap-4'>
-            <div className='font-bold text-xs'>
-              {listing.bedrooms > 1
-                ? `${listing.bedrooms} beds `
-                : `${listing.bedrooms} bed `}
-            </div>
-            <div className='font-bold text-xs'>
-              {listing.bathrooms > 1
-                ? `${listing.bathrooms} baths `
-                : `${listing.bathrooms} bath `}
-            </div>
+
+          {/* Location */}
+          <div className="flex items-center gap-2 text-gray-500 text-sm">
+            <MdLocationOn className="text-orange-500" />
+            <span>{listing.address}</span>
+          </div>
+
+          {/* Book Now */}
+          <div className="pt-2">
+            <span className="text-orange-500 font-semibold text-sm inline-flex items-center gap-1 hover:underline">
+              Book Now <FaArrowRight className="text-xs" />
+            </span>
           </div>
         </div>
       </Link>

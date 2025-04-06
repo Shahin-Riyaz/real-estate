@@ -16,12 +16,12 @@ router.post("/", async (req, res) => {
         headers: {
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
           "Content-Type": "application/json",
-          "HTTP-Referer": "http://localhost:5174",
+          "HTTP-Referer": "http://localhost:5173",
           "X-Title": "RealEstateBot",
         },
 
         body: JSON.stringify({
-          model: "openai/gpt-3.5-turbo", 
+          model: "openai/gpt-3.5-turbo",
           max_tokens: 100,
           messages: [
             {
